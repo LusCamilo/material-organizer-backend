@@ -18,10 +18,11 @@ import { SupplierResolver } from './graphql/resolvers/supplier.resolver';
     }),
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
-      database: path.join(__dirname, '..', 'database.sqlite'),
+      database: process.env.NODE_ENV === "test" ? ":memory:"
+        : path.join(__dirname, '..', 'database.sqlite'),
       entities: [path.join(__dirname, "entities", "*.entity{.ts,.js}")],
-      synchronize: true,
-      logging: true
+      synchronize: process.env.NODE_ENV !== "development",
+      logging: process.env.NODE_ENV === "development"
     }),
   ],
 })

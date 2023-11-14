@@ -1,5 +1,5 @@
 import { Args, ID, Mutation, Query, Resolver } from "@nestjs/graphql"
-import { Supplier } from "src/entities/supplier.entity"
+import { Supplier } from "../../entities/supplier.entity"
 import { CreateSupplierInput } from "../inputs/create-supplier.input"
 import { UpdateSupplierInput } from "../inputs/update-supplier.input"
 
