@@ -2,6 +2,22 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ChemicalMaterial {
+  createdAt: DateTime!
+  id: String!
+  name: String!
+  quantityInStock: Int!
+  supplier: Supplier
+  supplierId: String!
+  updatedAt: DateTime!
+}
+
+input CreateChemicalMaterialInput {
+  name: String!
+  quantityInStock: Float!
+  supplierId: String!
+}
+
 input CreateElectricMaterialInput {
   name: String!
   quantityInStock: Float!
@@ -27,16 +43,31 @@ type ElectricMaterial {
   updatedAt: DateTime!
 }
 
+type HydraulicMaterial {
+  createdAt: DateTime!
+  id: String!
+  name: String!
+  quantityInStock: Int!
+  supplier: Supplier
+  supplierId: String!
+  updatedAt: DateTime!
+}
+
 type Mutation {
   DeleteSupplier(id: ID!): Boolean!
+  createChemicalMaterial(input: CreateChemicalMaterialInput!): ChemicalMaterial!
   createElectricMaterial(input: CreateElectricMaterialInput!): ElectricMaterial!
   createSupplier(input: CreateSupplierInput!): Supplier!
+  deleteChemicalMaterial(id: ID!): Boolean!
   deleteElectricMaterial(id: ID!): Boolean!
+  updateChemicalMaterial(id: ID!, input: CreateChemicalMaterialInput!): ChemicalMaterial
   updateElectricMaterial(id: ID!, input: CreateElectricMaterialInput!): ElectricMaterial
   updateSupplier(id: ID!, input: UpdateSupplierInput!): Supplier!
 }
 
 type Query {
+  chemicalMaterial(id: ID!): ChemicalMaterial
+  chemicalMaterials: [ChemicalMaterial!]!
   electricMaterial(id: ID!): ElectricMaterial
   electricMaterials: [ElectricMaterial!]!
   supplier(id: ID!): Supplier
@@ -44,8 +75,10 @@ type Query {
 }
 
 type Supplier {
+  chemicalMaterial: [ChemicalMaterial!]
   createdAt: DateTime!
   electricMaterial: [ElectricMaterial!]
+  hydraulicMaterial: [HydraulicMaterial!]
   id: String!
   name: String!
   updatedAt: DateTime!

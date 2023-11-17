@@ -5,11 +5,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import path from 'node:path';
 import { ElectricMaterialResolver } from './graphql/resolvers/electric.resolver';
 import { SupplierResolver } from './graphql/resolvers/supplier.resolver';
+import { ChemicalMaterialResolver } from './graphql/resolvers/chemical.resolver';
 
 @Module({
   imports: [
     SupplierResolver,
     ElectricMaterialResolver,
+    ChemicalMaterialResolver,
+    ChemicalMaterialResolver,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       sortSchema: true,
       playground: true,

@@ -9,7 +9,9 @@ export class SupplierResolver {
     async suppliers() {
         return Supplier.find({
             relations: {
-                electricMaterial: true
+                electricMaterial: true,
+                hydraulicMaterial: true,
+                chemicalMaterial: true
             }
         })
     }
@@ -21,7 +23,9 @@ export class SupplierResolver {
         return Supplier.findOne({
             where: { id },
             relations: {
-                electricMaterial: true
+                electricMaterial: true,
+                hydraulicMaterial: true,
+                chemicalMaterial: true
             }
         })
     }
