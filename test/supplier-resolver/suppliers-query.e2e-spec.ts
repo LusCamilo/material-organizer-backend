@@ -35,6 +35,17 @@ describe('Supplier Resolver', () => {
       electricMaterial{
         id
         name
+        quantityInStock
+      }
+      chemicalMaterial{
+        id
+        name
+        quantityInStock
+      }
+      hydraulicMaterial{
+        id
+        name
+        quantityInStock
       }
     }
   }`)
@@ -46,6 +57,8 @@ describe('Supplier Resolver', () => {
     expect(response.body.data.suppliers[0].id).toBe(supplier.id)
     expect(response.body.data.suppliers[0].name).toBe(supplier.name)
     expect(response.body.data.suppliers[0].electricMaterial).not.toBeNull()
+    expect(response.body.data.suppliers[0].hydraulicMaterial).not.toBeNull()
+    expect(response.body.data.suppliers[0].chemicalMaterial).not.toBeNull()
 
   }, 100000);
 });

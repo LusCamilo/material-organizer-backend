@@ -18,6 +18,17 @@ describe('Supplier Resolver query by id', () => {
     electricMaterial{
       id
       name
+      quantityInStock
+    }
+    chemicalMaterial{
+      id
+      name
+      quantityInStock
+    }
+    hydraulicMaterial{
+      id
+      name
+      quantityInStock
     }
   }
 }`
@@ -48,6 +59,8 @@ describe('Supplier Resolver query by id', () => {
     expect(response.body.data.supplier.id).toBe(supplier.id)
     expect(response.body.data.supplier.name).toBe(supplier.name)
     expect(response.body.data.supplier.electricMaterial).not.toBeNull()
+    expect(response.body.data.supplier.hydraulicMaterial).not.toBeNull()
+    expect(response.body.data.supplier.chemicalMaterial).not.toBeNull()
 
   }, 100000);
 
