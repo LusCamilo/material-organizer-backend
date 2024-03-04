@@ -1,7 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import "dotenv/config"
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
 import { applyAppMiddleware } from './utils/apply-app-middleware';
 
 
